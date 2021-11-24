@@ -2,6 +2,7 @@ package com.example.androidnews.service;
 
 import com.example.androidnews.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.androidnews.result.Result;
 
 /**
  * <p>

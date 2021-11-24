@@ -27,7 +27,8 @@ public class ShiroConfig {
         filterRuleMap.put("/**","jwt");
         //不需要拦截的请求
         filterRuleMap.put("/base/**","anon");
-        filterRuleMap.put("/user/**","anon");
+        filterRuleMap.put("/users/**","authc");
+        filterRuleMap.put("/admin/**","authc");
         factoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return factoryBean;
     }
