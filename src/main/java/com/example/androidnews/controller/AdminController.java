@@ -71,9 +71,9 @@ public class AdminController {
         return null;
     }
 
-    @PostMapping("/updateUserPermission")
-    public Result updateUser(@RequestHeader String token,
-                             @RequestBody String userid,
+    @PostMapping("/super/updateUserPermission")
+    public Result updatePermission(@RequestHeader String token,
+                             @RequestBody String userId,
                              @RequestBody String role){
         return null;
     }

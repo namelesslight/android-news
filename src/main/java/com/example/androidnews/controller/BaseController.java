@@ -22,22 +22,22 @@ public class BaseController {
     }
 
     @GetMapping("/newsFind")
-    public Result findNews(String newsKey){
+    public Result findNews(@RequestBody String newsKeyWord){
         return null;
     }
 
     @GetMapping("/userFind")
-    public Result findUser(String newsKey){
+    public Result findUser(@RequestBody String userKeyWord){
         return null;
     }
 
-    @GetMapping("/queryNew/{url}")
-    public Result queryOneNews(@PathVariable String url){
+    @GetMapping("/queryNew/{newsId}")
+    public Result queryOneNews(@PathVariable String newsId){
         return null;
     }
 
-    @GetMapping("/queryUser/{url}")
-    public Result queryOneUser(@PathVariable String url){
+    @GetMapping("/queryUser/{newsId}")
+    public Result queryOneUser(@PathVariable String newsId){
         return null;
     }
 

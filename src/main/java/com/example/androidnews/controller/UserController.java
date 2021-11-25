@@ -28,13 +28,13 @@ public class UserController {
 
     @PutMapping("/addPraise")
     public Result addPraise(@RequestHeader String token,
-                            @RequestBody String commentId){
+                            @RequestBody String praiseId){
         return null;
     }
 
     @DeleteMapping("/deletePraise")
     public Result deletePraise(@RequestHeader String token,
-                               @RequestBody String commentId){
+                               @RequestBody String praiseId){
         return null;
     }
 

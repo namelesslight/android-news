@@ -6,4 +6,4 @@ spring:
     password: 123456
 mybatis-plus:
   mapper-locations: classpath*:/mapper/*.xml
-  type-aliases-package: com.example.androidnewsproject.mapper
+  type-aliases-package: com.example.androidnews.mapper
