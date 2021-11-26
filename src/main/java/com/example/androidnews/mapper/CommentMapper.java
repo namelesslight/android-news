@@ -4,6 +4,8 @@ import com.example.androidnews.entity.Comment;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -14,5 +16,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface CommentMapper extends BaseMapper<Comment> {
-
+    public List<Comment> listComment(String newsId, String commentFather);
 }

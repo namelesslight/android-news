@@ -4,6 +4,8 @@ import com.example.androidnews.entity.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * <p>
  *  Mapper 接口
@@ -15,4 +17,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper extends BaseMapper<User> {
 
+    public Integer getUserByUsernameCount(String username);
+
+    public Integer getUserByNamePasswordCount(String username,String password);
+
+    public Integer insertUser(String username,String password);
+
+    public Integer updateUserPassword(String username,String newPassword);
+
+    public List<User> findUser(String userKeyWord);
 }

@@ -1,6 +1,7 @@
 package com.example.androidnews.filter;
 
 import com.example.androidnews.entity.token.JwtToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,16 +29,16 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     @Override
     protected boolean executeLogin(ServletRequest request, ServletResponse response) throws Exception {
         HttpServletRequest httpServletRequest= (HttpServletRequest)request;
-        String token = httpServletRequest.getHeader("Token");
-        JwtToken jwtToken = new JwtToken(token);
-        getSubject(request,response).login(jwtToken);
+        String token = httpServletRequest.getHeader("token");
+        UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(token,token);
+        getSubject(request,response).login(usernamePasswordToken);
         return true;
     }
 
     @Override
     protected boolean isLoginAttempt(ServletRequest request, ServletResponse response) {
         HttpServletRequest req = (HttpServletRequest) request;
-        String token = req.getHeader("Token");
+        String token = req.getHeader("token");
         return token != null;
     }
 

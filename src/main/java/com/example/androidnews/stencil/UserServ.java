@@ -16,6 +16,6 @@ public interface UserServ {
 
     public Result updateInfo(String token,String content,String icon,String path);
 
-    public Result updatePassword(String token,String password,String path);
+    public Result updatePassword(String token,String oldPassword ,String password,String path);
 
 }

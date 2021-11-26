@@ -28,6 +28,7 @@ public class Result {
         this.info = info;
         this.date = date;
         this.data = data;
+        this.path = path;
     }
 
     public Result result200(Object data,String path){

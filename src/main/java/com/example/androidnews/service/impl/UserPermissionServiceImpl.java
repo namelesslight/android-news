@@ -6,6 +6,7 @@ import com.example.androidnews.service.IUserPermissionService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,8 +20,16 @@ import java.util.List;
 @Service
 public class UserPermissionServiceImpl extends ServiceImpl<UserPermissionMapper, UserPermission> implements IUserPermissionService {
 
+    @Resource
+    private UserPermissionMapper userPermissionMapper;
+
+    /**
+     * 获取用户权限
+     * @param username
+     * @return
+     */
     @Override
     public List<UserPermission> listPermissionByUsername(String username) {
-        return null;
+        return userPermissionMapper.listPermissionByUsername(username);
     }
 }

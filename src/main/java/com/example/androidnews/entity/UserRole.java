@@ -30,5 +30,11 @@ public class UserRole implements Serializable {
      */
     private String role;
 
+    public UserRole() {
+    }
 
+    public UserRole(String id, String role) {
+        this.id = id;
+        this.role = role;
+    }
 }

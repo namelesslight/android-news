@@ -2,6 +2,7 @@ package com.example.androidnews.controller;
 
 import com.example.androidnews.result.Result;
 import com.example.androidnews.stencil.AdminServ;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

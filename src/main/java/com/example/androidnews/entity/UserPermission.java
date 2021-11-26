@@ -30,5 +30,11 @@ public class UserPermission implements Serializable {
      */
     private String permission;
 
+    public UserPermission() {
+    }
 
+    public UserPermission(String id, String permission) {
+        this.id = id;
+        this.permission = permission;
+    }
 }

@@ -2,7 +2,8 @@ package com.example.androidnews.service;
 
 import com.example.androidnews.entity.Category;
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.example.androidnews.result.Result;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,5 +14,7 @@ import com.example.androidnews.result.Result;
  * @since 2021-11-22
  */
 public interface ICategoryService extends IService<Category> {
+
+    public List<Category> listCategory();
 
 }

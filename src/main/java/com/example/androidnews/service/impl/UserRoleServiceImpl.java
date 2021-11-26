@@ -6,6 +6,7 @@ import com.example.androidnews.service.IUserRoleService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,8 +20,16 @@ import java.util.List;
 @Service
 public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> implements IUserRoleService {
 
+    @Resource
+    private UserRoleMapper userRoleMapper;
+
+    /**
+     * 获取用户角色
+     * @param username
+     * @return
+     */
     @Override
     public List<UserRole> listRoleByUsername(String username) {
-        return null;
+        return userRoleMapper.listRoleByUsername(username);
     }
 }
