@@ -23,7 +23,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     public Integer insertUser(String username,String password);
 
-    public Integer updateUserPassword(String username,String newPassword);
-
     public List<User> findUser(String userKeyWord);
+
+    public List<User> listUser();
 }

@@ -17,6 +17,33 @@ import java.util.List;
 @Repository
 public interface CategoryMapper extends BaseMapper<Category> {
 
+    /**
+     * 查询所有类别
+     * @return java.util.List
+     */
     public List<Category> listCategory();
+
+    /**
+     * 通过编号修改类别
+     * @param categoryId 类别编号
+     * @param categoryName 类别名
+     * @return java.lang.Integer
+     */
+    public Integer updateCategoryById(String categoryId,String categoryName);
+
+    /**
+     * 通过编号删除类别
+     * @param categoryId 类别编号
+     * @return java.lang.Integer
+     */
+    public Integer deleteCategoryById(String categoryId);
+
+    /**
+     * 添加类别
+     * @param categoryId 类别编号
+     * @param categoryName 类别名
+     * @return java.lang.Integer
+     */
+    public Integer insertCategory(String categoryId,String categoryName);
 
 }

@@ -15,4 +15,20 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AppFileMapper extends BaseMapper<AppFile> {
 
+    /**
+     * 通过编号删除文件
+     * @param fileId 文件编号
+     * @return java.lang.Integer
+     */
+    public Integer deleteFileById(String fileId);
+
+    /**
+     * 添加文件
+     * @param fileId 文件编号
+     * @param fileName 文件名
+     * @param filePath 文件路径
+     * @return java.lang.Integer
+     */
+    public Integer insertFile(String fileId, String fileName, String filePath,String fileType);
+
 }

@@ -26,7 +26,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     /**
      * 判断用户名是否重复
      * @param username
-     * @return
+     * @return java.util.List
      */
     @Override
     public Boolean existUser(String username) {
@@ -35,9 +35,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     /**
      * 判断数据创建成功
-     * @param username
-     * @param password
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @return java.util.List
      */
     @Override
     public Boolean register(String username,String password) {
@@ -46,9 +46,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     /**
      * 通过用户名密码查询用户
-     * @param username
-     * @param password
-     * @return
+     * @param username 用户名
+     * @param password 密码
+     * @return java.util.List
      */
     @Override
     public Boolean login(String username, String password) {
@@ -57,8 +57,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     /**
      * 查询用户
-     * @param userKeyWord
-     * @return
+     * @param userKeyWord 关键字
+     * @return java.util.List
      */
     @Override
     public List<User> findUser(String userKeyWord) {
@@ -66,13 +66,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     /**
-     * 更新密码
-     * @param username
-     * @param newPassword
-     * @return
+     * 查询所有用户
+     * @return java.util.List
      */
     @Override
-    public Boolean updatePassword(String username, String newPassword) {
-        return userMapper.updateUserPassword(username,newPassword) == 1;
+    public List<User> listUsers() {
+        return userMapper.listUser();
     }
+
 }

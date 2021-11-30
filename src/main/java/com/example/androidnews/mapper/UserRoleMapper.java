@@ -16,5 +16,13 @@ import java.util.List;
  */
 @Repository
 public interface UserRoleMapper extends BaseMapper<UserRole> {
+
+    /**
+     * 通过用户名查询权限
+     * @param username 用户名
+     * @return java.util.List
+     */
     public List<UserRole> listRoleByUsername(String username);
+
+    public Integer updateUserRole(String userId,String role);
 }

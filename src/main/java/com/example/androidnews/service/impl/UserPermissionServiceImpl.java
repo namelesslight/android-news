@@ -32,4 +32,26 @@ public class UserPermissionServiceImpl extends ServiceImpl<UserPermissionMapper,
     public List<UserPermission> listPermissionByUsername(String username) {
         return userPermissionMapper.listPermissionByUsername(username);
     }
+
+    /**
+     * 删除用户权限
+     * @param username 用户名
+     * @param userPermission 用户权限
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean deletePermission(String username, String userPermission) {
+        return userPermissionMapper.deletePermission(username,userPermission) == 1;
+    }
+
+    /**
+     *  添加用户权限
+     * @param username 用户名
+     * @param userPermission 用户权限
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean insertPermission(String username, String userPermission) {
+        return userPermissionMapper.insertPermission(username,userPermission) == 1;
+    }
 }

@@ -10,11 +10,29 @@
     <select id="listNews" resultType="com.example.androidnews.entity.News">
         select *
         from  `news`
-        where is_delete = 0
+        where `is_delete` = 0
     </select>
     <select id="listByCategory" resultType="com.example.androidnews.entity.News">
         select *
         from  `news`
         where `category` = #{categoryId}
+        and `is_delete` = 1
     </select>
+
+    <insert id="insertNews">
+        insert into `news`
+        values(#{newsId},#{title},#{content},#{file},#{category},#{type},0,now(),now());
+    </insert>
+
+    <update id="updateNews">
+        update `news`
+        set `title` = #{title},`content` = #{content},`file_path` = #{file},`category` = #{category},`type` = #{type}
+        where `id` = #{newsId}
+    </update>
+
+    <update id="deleteNewsById">
+        update `news`
+        set `is_delete` = 1
+        where `id` = #{newsId}
+    </update>
 </mapper>

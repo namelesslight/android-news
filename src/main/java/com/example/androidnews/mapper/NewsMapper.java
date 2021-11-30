@@ -37,4 +37,33 @@ public interface NewsMapper extends BaseMapper<News> {
      */
     public List<News> findNews(String keyWord);
 
+    /**
+     * 添加新闻
+     * @param title 新闻标题
+     * @param content 新闻内容
+     * @param file 新闻文件
+     * @param category 新闻类别
+     * @param type 新闻类型
+     * @return java.lang.Integer
+     */
+    public Integer insertNews(String newsId,String title, String content, String file, String category, String type);
+
+    /**
+     * 修改新闻
+     * @param newsId 新闻编号
+     * @param title 新闻标题
+     * @param content 新闻内容
+     * @param file 新闻文件
+     * @param category 新闻类别
+     * @param type 新闻类型
+     * @return java.lang.Integer
+     */
+    public Integer updateNews(String newsId, String title, String content, String file, String category, String type);
+
+    /**
+     * 删除新闻
+     * @param newsId 新闻编号
+     * @return java.lang.Integer
+     */
+    public Integer deleteNewsById(String newsId);
 }

@@ -16,5 +16,26 @@ import java.util.List;
  */
 @Repository
 public interface UserPermissionMapper extends BaseMapper<UserPermission> {
+    /**
+     * 通过用户名查询用户权限
+     * @param username 用户名
+     * @return java.util.List
+     */
     public List<UserPermission> listPermissionByUsername(String username);
+
+    /**
+     * 删除用户权限
+     * @param username 用户名
+     * @param userPermission 用户权限
+     * @return java.lang.Integer
+     */
+    public Integer deletePermission(String username, String userPermission);
+
+    /**
+     * 添加用户权限
+     * @param username 用户名
+     * @param userPermission 用户权限
+     * @return java.lang.Integer
+     */
+    public Integer insertPermission(String username, String userPermission);
 }

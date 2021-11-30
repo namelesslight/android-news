@@ -25,7 +25,9 @@
             insert into `user` values (#{username},'1',#{password},'',0,now(),now())
     </insert>
 
-    <update id="updateUserPassword">
-        update `user` set password = #{newPassword}
-    </update>
+    <select id="listUser" resultType="com.example.androidnews.entity.User">
+        select *
+        from `user`
+        where `is_delete` = 0;
+    </select>
 </mapper>

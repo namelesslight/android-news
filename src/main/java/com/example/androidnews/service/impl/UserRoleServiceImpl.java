@@ -25,11 +25,23 @@ public class UserRoleServiceImpl extends ServiceImpl<UserRoleMapper, UserRole> i
 
     /**
      * 获取用户角色
-     * @param username
-     * @return
+     * @param username 用户名
+     * @return java.util.List
      */
     @Override
     public List<UserRole> listRoleByUsername(String username) {
         return userRoleMapper.listRoleByUsername(username);
     }
+
+    /**
+     * 更新用户权限
+     * @param userId 用户名
+     * @param role 角色
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean updateRole(String userId, String role) {
+        return userRoleMapper.updateUserRole(userId,role) == 1;
+    }
+
 }

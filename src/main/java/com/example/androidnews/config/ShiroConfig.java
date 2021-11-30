@@ -1,5 +1,6 @@
 package com.example.androidnews.config;
 
+import com.example.androidnews.filter.JwtFilter;
 import com.example.androidnews.realm.LoginRealm;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
@@ -11,6 +12,10 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import javax.servlet.Filter;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Configuration
 public class ShiroConfig {
@@ -18,18 +23,17 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilterFactoryBean(@Qualifier("manager") DefaultWebSecurityManager manager){
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(manager);
-//        Map<String, Filter> filterMap = new HashMap<>();
-//        filterMap.put("jwt",new JwtFilter());
-//        factoryBean.setFilters(filterMap);
-//        factoryBean.setUnauthorizedUrl("/error");
-//        Map<String,String>filterRuleMap =new HashMap<>();
-//        //设置需要拦截的请求
-//        filterRuleMap.put("/**","jwt");
-//        //不需要拦截的请求
-//        filterRuleMap.put("/base/**","anon");
-//        filterRuleMap.put("/users/**","authc");
-//        filterRuleMap.put("/admin/**","authc");
-//        factoryBean.setFilterChainDefinitionMap(filterRuleMap);
+        Map<String, Filter> filterMap = new HashMap<>();
+        filterMap.put("jwt",new JwtFilter());
+        factoryBean.setFilters(filterMap);
+        factoryBean.setUnauthorizedUrl("/");
+        Map<String,String>filterRuleMap =new HashMap<>();
+        //设置需要拦截的请求
+        filterRuleMap.put("/**","jwt");
+        //不需要拦截的请求
+        filterRuleMap.put("/base/**","anon");
+        //设置需要认证的
+        factoryBean.setFilterChainDefinitionMap(filterRuleMap);
         return factoryBean;
     }
 

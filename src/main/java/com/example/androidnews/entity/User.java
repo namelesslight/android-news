@@ -3,6 +3,7 @@ package com.example.androidnews.entity;
 import java.time.LocalDateTime;
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -24,8 +25,8 @@ public class User implements Serializable {
     /**
      * 用户名
      */
-    @TableId("id")
-    private String username;
+    @TableId(value = "id")
+    private String id;
 
     /**
      * 用户头像

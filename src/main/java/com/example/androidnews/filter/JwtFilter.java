@@ -1,6 +1,5 @@
 package com.example.androidnews.filter;
 
-import com.example.androidnews.entity.token.JwtToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.springframework.http.HttpStatus;
@@ -15,7 +14,7 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
-        if (((HttpServletRequest)request).getHeader("Token") != null){
+        if (((HttpServletRequest)request).getHeader("token") != null){
             try {
                 executeLogin(request,response);
                 return true;

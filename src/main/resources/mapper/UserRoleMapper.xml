@@ -4,4 +4,10 @@
     <select id="listRoleByUsername" resultType="com.example.androidnews.entity.UserRole">
         select * from user_role where id = #{username}
     </select>
+
+    <update id="updateUserRole">
+        update  `user_role`
+        set `role` = #{role}
+        where `id` = #{userId}
+    </update>
 </mapper>
