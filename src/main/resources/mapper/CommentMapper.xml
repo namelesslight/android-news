@@ -8,4 +8,15 @@
         and news = #{newsId}
         and father = #{commentFather}
     </select>
+
+    <insert id="addComment">
+            insert into `comment`
+            values (#{commentId},#{fahter},#{username},#{content},#{news},0,now(),now())
+    </insert>
+
+    <update id="deleteComment">
+        update `comment`
+        set `is_delete` = 1
+        where id = #{commentId}
+    </update>
 </mapper>

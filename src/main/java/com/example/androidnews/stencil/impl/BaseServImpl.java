@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 基础相关操作
  * @author zcl
- * 基础类
  */
 @Service
 public class BaseServImpl implements BaseServ {
@@ -173,19 +173,4 @@ public class BaseServImpl implements BaseServ {
         resultMap.put("result",false);
         return new Result().result500(resultMap,path);
     }
-
-//    /**
-//     * 为新注册的用户添加基础权限
-//     * @param username 用户名
-//     * @return com.example.androidnews.result.Result
-//     */
-//    private Boolean addRoleAndPermission(String username){
-//
-////        Boolean givePermissions = false;
-////            if (i==permissions.toArray().length){
-////                givePermissions = true;
-////            }
-////        return giveRole && givePermissions;
-//    }
-
 }

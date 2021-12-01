@@ -2,6 +2,7 @@ package com.example.androidnews.service;
 
 import com.example.androidnews.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.androidnews.result.Result;
 
 import java.util.List;
 
@@ -50,4 +51,22 @@ public interface IUserService extends IService<User> {
      * @return java.util.List
      */
     public List<User> listUsers();
-}
+
+    /**
+     * 用户修改个人信息
+     * @param username 用户名
+     * @param content 个人简介
+     * @param icon 头像路径
+     * @return java.lang.Boolean
+     */
+    public Boolean updateUserInfo(String username,String content, String icon);
+
+    /**
+     * 修改密码
+     * @param username 用户名
+     * @param newPassword 新密码
+     * @return java.lang.Boolean
+     */
+    public Boolean updatePassword(String username, String newPassword);
+
+    }

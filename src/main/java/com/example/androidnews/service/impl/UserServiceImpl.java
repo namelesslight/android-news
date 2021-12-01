@@ -74,4 +74,27 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return userMapper.listUser();
     }
 
+    /**
+     * 修改个人信息
+     * @param username 用户名
+     * @param content 个人简介
+     * @param icon 头像路径
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean updateUserInfo(String username,String content, String icon) {
+        return userMapper.updateUserInfo(username,content,icon) == 1;
+    }
+
+    /**
+     * 修改密码
+     * @param username 用户名
+     * @param newPassword 新密码
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean updatePassword(String username, String newPassword) {
+        return userMapper.updatePassword(username,newPassword) == 1;
+    }
+
 }

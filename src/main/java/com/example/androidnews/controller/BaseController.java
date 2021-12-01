@@ -1,5 +1,6 @@
 package com.example.androidnews.controller;
 
+import com.example.androidnews.entity.dto.UserPassword;
 import com.example.androidnews.result.Result;
 import com.example.androidnews.stencil.BaseServ;
 import org.springframework.web.bind.annotation.*;
@@ -60,7 +61,7 @@ public class BaseController {
      * @return com.example.androidnews.result.Result
      */
     @GetMapping("/newsFind")
-    public Result findNews(@RequestParam String newsKeyWord){
+    public Result findNews(@RequestBody String newsKeyWord){
         return baseServ.findNews(newsKeyWord,"/newsFind");
     }
 
@@ -69,31 +70,27 @@ public class BaseController {
      * @return com.example.androidnews.result.Result
      */
     @GetMapping("/userFind")
-    public Result findUser(@RequestParam String userKeyWord){
+    public Result findUser(@RequestBody String userKeyWord){
         return baseServ.findUser(userKeyWord,"/newsFind");
     }
 
     /**
      * 用户注册
-     * @param username 用户名
-     * @param password 密码
+     * @param up 用户名和密码
      * @return com.example.androidnews.result.Result
      */
     @PutMapping("/register")
-    public Result register(@RequestParam String username,
-                           @RequestParam String password){
-        return baseServ.register(username,password,"/register");
+    public Result register(@RequestBody UserPassword up){
+        return baseServ.register(up.getUsername(),up.getPassword(),"/register");
     }
 
     /**
      * 用户登录
-     * @param username 用户名
-     * @param password 密码
+     * @param up 用户名和密码
      * @return com.example.androidnews.result.Result
      */
     @PostMapping("/login")
-    public Result login(@RequestParam String username,
-                        @RequestParam String password){
-        return baseServ.login(username,password,"/login");
+    public Result login(@RequestBody UserPassword up){
+        return baseServ.login(up.getUsername(),up.getPassword(),"/login");
     }
 }

@@ -30,4 +30,18 @@
         from `user`
         where `is_delete` = 0;
     </select>
+
+    <update id="updateUserInfo">
+        update `user`
+        set `simple` = #{content},
+        `icon` = #{icon}
+        where `id` = #{username}
+
+    </update>
+
+    <update id="updatePassword">
+        update `user`
+        set `password` = #{newPassword}
+        where `id` = #{username}
+    </update>
 </mapper>

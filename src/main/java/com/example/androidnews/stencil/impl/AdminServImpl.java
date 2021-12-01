@@ -16,6 +16,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 管理员相关操作
+ * @author zcl
+ */
 @Service
 public class AdminServImpl implements AdminServ {
 
@@ -96,6 +100,7 @@ public class AdminServImpl implements AdminServ {
         return new Result().result500(resultMap,path);
     }
 
+
     /**
      * 删除文件
      * @param token 认证token
@@ -116,6 +121,25 @@ public class AdminServImpl implements AdminServ {
     }
 
     /**
+     * 添加文件
+     * @param token 认证token
+     * @param filePath 文件路径
+     * @param fileType 文件类型
+     * @return com.example.androidnews.result.Result
+     */
+    @Override
+    public Result addFile(String token,String fileName, String filePath, String fileType,String path) {
+        Map<String ,Object> resultMap = new HashMap<>();
+        if (JWTUtil.verify(token)){
+            String fileId = UUIDUtil.getUUID();
+            Boolean result = fileService.insertFile(fileId,fileName,filePath,fileType);
+            resultMap.put("result",result);
+        }
+        resultMap.put("result","fail");
+        return new Result().result500(resultMap,path);
+    }
+
+    /**
      * 添加新闻
      * @param token 认证token
      * @param title 新闻标题
@@ -130,13 +154,9 @@ public class AdminServImpl implements AdminServ {
     public Result addNews(String token, String title, String content, String file, String category, String type, String path) {
         Map<String ,Object> resultMap = new HashMap<>();
         if (JWTUtil.verify(token)){
-            String fileId = UUIDUtil.getUUID();
-            String temp = file.substring(file.lastIndexOf("/")+1);
-            String fileName = temp.replace(temp.substring(temp.lastIndexOf(".")),"");
-            Boolean fileAdd = fileService.insertFile(fileId,fileName,file,type);
             String newsId = UUIDUtil.getUUID();
             Boolean newsAdd = newsService.insertNews(newsId,title,content,file,category,type);
-            resultMap.put("result",fileAdd && newsAdd);
+            resultMap.put("result",newsAdd);
             return new Result().result200(resultMap,path);
         }
         resultMap.put("result","fail");

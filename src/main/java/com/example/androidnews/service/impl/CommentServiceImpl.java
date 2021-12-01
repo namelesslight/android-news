@@ -33,4 +33,28 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     public List<Comment> listComment(String newsId, String commentFather) {
         return commentMapper.listComment(newsId,commentFather);
     }
+
+    /**
+     * 添加评论
+     * @param commentId 评论编号
+     * @param father 评论父类
+     * @param username 评论用户
+     * @param content 评论内容
+     * @param news 评论新闻
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean addComment(String commentId, String father, String username, String content, String news) {
+        return commentMapper.addComment(commentId,father,username,content,news) == 1;
+    }
+
+    /**
+     * 删除评论
+     * @param commentId 评论编号
+     * @return java.lang.Boolean
+     */
+    @Override
+    public Boolean deleteComment(String commentId) {
+        return commentMapper.deleteComment(commentId) == 1;
+    }
 }

@@ -42,6 +42,16 @@ public interface AdminServ {
     public Result deleteFile(String token,String fileId,String path);
 
     /**
+     * 添加文件
+     * @param token 认证token
+     * @param filePath 文件路径
+     * @param fileType 文件类型
+     * @return
+     */
+    public Result addFile(String token,String filename,String filePath,String fileType,String path);
+
+
+    /**
      * 添加新闻
      * @param token 认证token
      * @param title 新闻标题

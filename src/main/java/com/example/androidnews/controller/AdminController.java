@@ -1,5 +1,7 @@
 package com.example.androidnews.controller;
 
+import com.example.androidnews.entity.dto.AdminAddRole;
+import com.example.androidnews.entity.dto.AdminNews;
 import com.example.androidnews.result.Result;
 import com.example.androidnews.stencil.AdminServ;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -28,7 +30,7 @@ public class AdminController {
     @PostMapping("/categoryUpdate/{categoryId}")
     public Result updateCategory(@RequestHeader String token,
                                  @PathVariable String categoryId,
-                                 @RequestParam String name){
+                                 @RequestBody String name){
         return adminServ.updateCategory(token,categoryId,name,"/categoryUpdate");
     }
 
@@ -76,35 +78,27 @@ public class AdminController {
 
     /**
      * 添加新闻
-     * @param token 认证token
-     * @param title 新闻标题
-     * @param content 新闻内容
-     * @param file 新闻文件
-     * @param category 新闻标题
-     * @param type 新闻类型
+     * @param adminNews 添加的新闻有关的内容
      * @return com.example.androidnews.result.Result
      */
     @RequiresPermissions("manage")
-    @RolesAllowed("manager")
+    @RolesAllowed({"supermanager","manager"})
     @PutMapping("/newsAdd")
     public Result addNews(@RequestHeader String token,
-                          @RequestParam String title,
-                          @RequestParam String content,
-                          @RequestParam String file,
-                          @RequestParam String category,
-                          @RequestParam String type){
-        return adminServ.addNews(token,title,content,file,category,type,"/newsAdd");
+                          @RequestBody AdminNews adminNews){
+        return adminServ.addNews(token,
+                adminNews.getTitle(),
+                adminNews.getContent(),
+                adminNews.getFile(),
+                adminNews.getCategory(),
+                adminNews.getType(), "/newsAdd");
     }
 
     /**
      * 修改新闻
      * @param token 认证token
      * @param newsId 新闻编号
-     * @param title 新闻标题
-     * @param content 新闻内容
-     * @param file 新闻文件
-     * @param category 新闻类别
-     * @param type 新闻类型
+     * @param adminNews 添加的新闻有关的内容
      * @return com.example.androidnews.result.Result
      */
     @RequiresPermissions("manage")
@@ -112,12 +106,13 @@ public class AdminController {
     @PostMapping("/newsUpdate/{newsId}")
     public Result updateNews(@RequestHeader String token,
                              @PathVariable String newsId,
-                             @RequestParam String title,
-                             @RequestParam String content,
-                             @RequestParam String file,
-                             @RequestParam String category,
-                             @RequestParam String type){
-        return adminServ.updateNews(token,newsId,title,content,file,category,type,"/newsUpdate");
+                             @RequestBody AdminNews adminNews){
+        return adminServ.updateNews(token,newsId,
+                adminNews.getTitle(),
+                adminNews.getContent(),
+                adminNews.getFile(),
+                adminNews.getCategory(),
+                adminNews.getType(), "/newsUpdate");
     }
 
 
@@ -150,16 +145,14 @@ public class AdminController {
     /**
      * 更新权限
      * @param token 认证token
-     * @param userId 用户名
-     * @param role 权限
+     * @param adminAddRole 添加的用户权限信息
      * @return com.example.androidnews.result.Result
      */
     @RequiresPermissions("manage")
     @RolesAllowed("supermanager")
     @PostMapping("/updateUserPermission")
     public Result updatePermission(@RequestHeader String token,
-                             @RequestParam String userId,
-                             @RequestParam String role){
-        return adminServ.updatePermission(token,userId,role,"/updateUserPermission");
+                                   @RequestBody AdminAddRole adminAddRole){
+        return adminServ.updatePermission(token,adminAddRole.getUsername(),adminAddRole.getRole(),"/updateUserPermission");
     }
 }
