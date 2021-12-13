@@ -76,7 +76,7 @@ public class BaseController {
     @ApiOperation("搜索新闻")
     @ApiImplicitParam(name = "newsKeyWord",value = "新闻关键词",dataType = "String",required = true)
     @GetMapping("/newsFind")
-    public Result findNews(@RequestBody String newsKeyWord){
+    public Result findNews(@RequestParam String newsKeyWord){
         return baseServ.findNews(newsKeyWord,"/newsFind");
     }
 
@@ -87,7 +87,7 @@ public class BaseController {
     @ApiOperation("搜索用户")
     @ApiImplicitParam(name = "userKeyWord",value = "用户关键词",dataType = "String",required = true)
     @GetMapping("/userFind")
-    public Result findUser(@RequestBody String userKeyWord){
+    public Result findUser(@RequestParam String userKeyWord){
         return baseServ.findUser(userKeyWord,"/newsFind");
     }
 

@@ -20,12 +20,12 @@ import java.util.Scanner;
 public class CodeGenerator {
 
     public static String scanner(String tip){
-        Scanner scanner=new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         StringBuffer stringBuffer=new StringBuffer();
         stringBuffer.append("请输入"+tip+":");
         System.out.println(stringBuffer.toString());
         if (scanner.hasNext()){
-            String ipt=scanner.next();
+            String ipt = scanner.next();
             if (StringUtils.isNotBlank(ipt)){
                 return ipt;
             }
@@ -35,14 +35,14 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
         String projectPath = System.getProperty("user.dir");
-        AutoGenerator autoGenerator=new AutoGenerator();
-        GlobalConfig globalConfig=new GlobalConfig();
+        AutoGenerator autoGenerator = new AutoGenerator();
+        GlobalConfig globalConfig = new GlobalConfig();
         globalConfig.setOutputDir(projectPath+"/src/main/java");
         globalConfig.setAuthor("zcl");
         globalConfig.setOpen(false);
         autoGenerator.setGlobalConfig(globalConfig);
 
-        DataSourceConfig dataSourceConfig=new DataSourceConfig();
+        DataSourceConfig dataSourceConfig = new DataSourceConfig();
         dataSourceConfig.setUrl("jdbc:mysql://localhost:3306"+"/"+scanner("数据库名"));
         dataSourceConfig.setDriverName("com.mysql.cj.jdbc.Driver");
         dataSourceConfig.setUsername("root");

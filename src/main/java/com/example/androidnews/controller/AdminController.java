@@ -1,5 +1,6 @@
 package com.example.androidnews.controller;
 
+import com.example.androidnews.entity.dto.AdminAddFile;
 import com.example.androidnews.entity.dto.AdminAddRole;
 import com.example.androidnews.entity.dto.AdminNews;
 import com.example.androidnews.result.Result;
@@ -60,6 +61,15 @@ public class AdminController {
     public Result insertCategory(@RequestHeader String token,
                                  @RequestParam String categoryName){
         return adminServ.insertCategory(token,categoryName,"/categoryAdd");
+    }
+    @RequiresPermissions("manage")
+    @RolesAllowed("manager")
+    @PutMapping("/addFile")
+    public Result addFile(@RequestHeader String token, @RequestBody AdminAddFile adminAddFile){
+        return adminServ.addFile(token,
+                adminAddFile.getFilename(),
+                adminAddFile.getFilePath(),
+                adminAddFile.getFileType(), "/addFile");
     }
 
     /**

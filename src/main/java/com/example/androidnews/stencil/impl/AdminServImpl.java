@@ -1,6 +1,7 @@
 package com.example.androidnews.stencil.impl;
 
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.example.androidnews.entity.Category;
 import com.example.androidnews.entity.User;
 import com.example.androidnews.entity.token.JwtToken;
@@ -134,6 +135,7 @@ public class AdminServImpl implements AdminServ {
             String fileId = UUIDUtil.getUUID();
             Boolean result = fileService.insertFile(fileId,fileName,filePath,fileType);
             resultMap.put("result",result);
+            return new Result().result200(resultMap,path);
         }
         resultMap.put("result","fail");
         return new Result().result500(resultMap,path);
