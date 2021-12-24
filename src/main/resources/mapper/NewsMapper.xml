@@ -2,21 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.androidnews.mapper.NewsMapper">
     <select id="findNews" resultType="com.example.androidnews.entity.News">
-        select *
-        from `news`
-        where `title` like  concat('%',#{keyWord},'%')
-        or `content` like concat('%',#{keyWord},'%')
+        select news.id as id,news.title as title,news.content as content,app_file.`path` as `file_path`,news.category as category,
+               news.type as `type`,news.is_delete as is_delete,news.gmt_create as gmt_create,news.`gmt_update` as gmt_update
+        from news
+                 inner join app_file
+                            on news.file_path = app_file.id
+        where news.`title` like  concat('%',#{keyWord},'%')
+        or news.`content` like concat('%',#{keyWord},'%')
+        and news.`is_delete` = 0
     </select>
     <select id="listNews" resultType="com.example.androidnews.entity.News">
-        select *
-        from  `news`
-        where `is_delete` = 0
+        select news.id as id,news.title as title,news.content as content,app_file.`path` as `file_path`,news.category as category,
+               news.type as `type`,news.is_delete as is_delete,news.gmt_create as gmt_create,news.`gmt_update` as gmt_update
+        from news
+                 inner join app_file
+                            on news.file_path = app_file.id
+        WHERE news.is_delete = 0
     </select>
     <select id="listByCategory" resultType="com.example.androidnews.entity.News">
-        select *
-        from  `news`
-        where `category` = #{categoryId}
-        and `is_delete` = 1
+        select news.id as id,news.title as title,news.content as content,app_file.`path` as `file_path`,news.category as category,
+               news.type as `type`,news.is_delete as is_delete,news.gmt_create as gmt_create,news.`gmt_update` as gmt_update
+        from news
+                 inner join app_file
+                            on news.file_path = app_file.id
+        where news.`category` = #{categoryId}
+        and news.`is_delete` = 0
     </select>
 
     <insert id="insertNews">

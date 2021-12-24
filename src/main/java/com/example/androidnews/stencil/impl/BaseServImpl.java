@@ -104,7 +104,7 @@ public class BaseServImpl implements BaseServ {
         List<News> news = newsService.findNews(newsKey);
         Map<String ,Object> resultMap = new HashMap<>();
         resultMap.put("result",news);
-        return new Result().result200(news,path);
+        return new Result().result200(resultMap,path);
     }
 
     /**
@@ -117,7 +117,7 @@ public class BaseServImpl implements BaseServ {
     public Result findUser(String userKeyWord, String path) {
         List<User> users = userService.findUser(userKeyWord);
         Map<String ,Object> resultMap = new HashMap<>();
-        resultMap.put("result",userKeyWord);
+        resultMap.put("result",users);
         return new Result().result200(resultMap,path);
     }
 
